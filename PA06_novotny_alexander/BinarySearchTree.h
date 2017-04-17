@@ -44,6 +44,11 @@ class BinarySearchTree
                         const ItemType& target );
 
         int getHeightFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
+        int getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treeptr ) const;
+
+        void preorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
+        void inorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
+        void postorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
 
     private:
         std::shared_ptr<BinaryNode<ItemType>> rootPtr;
@@ -75,6 +80,8 @@ class BinarySearchTree
         friend std::ostream& operator<<( std::ostream& out, const BinarySearchTree<Test>& outTree );
 };
 
+// PROTECTED METHODS //////////////////////////////////////////////////////////
+
 template<class ItemType>
 auto BinarySearchTree<ItemType>::placeNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
                                              std::shared_ptr<BinaryNode<ItemType>> newNodePtr )
@@ -97,6 +104,35 @@ auto BinarySearchTree<ItemType>::placeNode ( std::shared_ptr<BinaryNode<ItemType
 
     return treePtr;
 }
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::removeValue ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+                                               const ItemType& target,
+                                               bool& isSuccessful )
+{
+    //TODO
+}
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::removeNode ( std::shared_ptr<BinaryNode<ItemType>> nodePtr )
+{
+    //TODO
+}
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::removeLeftMostNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+                                                      ItemType& inorderSuccesor )
+{
+    //TODO
+}
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+                                            const ItemType& target )
+{
+    //TODO
+}
+
 template<class ItemType>
 int BinarySearchTree<ItemType>::getHeightFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
 {
@@ -113,6 +149,32 @@ int BinarySearchTree<ItemType>::getHeightFrom ( std::shared_ptr<BinaryNode<ItemT
 }
 
 template<class ItemType>
+int BinarySearchTree<ItemType>::getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treeptr ) const
+{
+    //TODO
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::preorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+{
+    //TODO
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::inorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+{
+    //TODO
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::postorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+{
+    //TODO
+}
+
+// PUBLIC METHODS /////////////////////////////////////////////////////////////
+
+template<class ItemType>
 BinarySearchTree<ItemType>::BinarySearchTree () : rootPtr (nullptr)
 {}
 
@@ -126,7 +188,7 @@ BinarySearchTree<ItemType>::BinarySearchTree ( const ItemType& root )
 template<class ItemType>
 BinarySearchTree<ItemType>::BinarySearchTree ( const BinarySearchTree<ItemType>& tree )
 {
-    
+    //TODO
 }
 
 template<class ItemType>
@@ -148,6 +210,24 @@ int BinarySearchTree<ItemType>::getHeight () const
 }
 
 template<class ItemType>
+int BinarySearchTree<ItemType>::getNumberOfNodes () const
+{
+    //TODO
+}
+
+template<class ItemType>
+ItemType BinarySearchTree<ItemType>::getRootData () const
+{
+    //TODO
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::setRootData ( const ItemType& newData )
+{
+    //TODO
+}
+
+template<class ItemType>
 bool BinarySearchTree<ItemType>::add ( const ItemType& newItem )
 {
     auto newNodePtr = std::make_shared<BinaryNode<ItemType>> ();
@@ -156,6 +236,54 @@ bool BinarySearchTree<ItemType>::add ( const ItemType& newItem )
     rootPtr = placeNode ( rootPtr, newNodePtr );
 
     return true;
+}
+
+template<class ItemType>
+bool BinarySearchTree<ItemType>::remove ( const ItemType& target )
+{
+    //TODO
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::clear ()
+{
+    //TODO
+}
+
+template<class ItemType>
+ItemType BinarySearchTree<ItemType>::getEntry ( const ItemType& anEntry ) const
+{
+    //TODO
+}
+
+template<class ItemType>
+bool BinarySearchTree<ItemType>::contains ( const ItemType& anEntry ) const
+{
+    //TODO
+}
+
+template<class Itemtype>
+void BinarySearchTree<ItemType>::preorderTraverse ( void visit ( ItemType& ) ) const
+{
+    //TODO
+}
+
+template<class Itemtype>
+void BinarySearchTree<ItemType>::inorderTraverse ( void visit ( ItemType& ) ) const
+{
+    //TODO
+}
+
+template<class Itemtype>
+void BinarySearchTree<ItemType>::postorderTraverse ( void visit ( ItemType& ) ) const
+{
+    //TODO
+}
+
+template<class ItemType>
+BinarySearchTree<ItemType>& BinarySearchTree::operator=( const BinarySearchTree<ItemType>& newTree )
+{
+    //TODO
 }
 
 template<class ItemType>
