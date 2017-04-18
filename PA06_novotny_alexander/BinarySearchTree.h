@@ -41,7 +41,7 @@ class BinarySearchTree
         auto removeLeftMostNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
                                   ItemType& inorderSuccesor );
         auto findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
-                        const ItemType& target );
+                        const ItemType& target ) const;
 
         int getHeightFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
         int getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
@@ -128,9 +128,13 @@ auto BinarySearchTree<ItemType>::removeLeftMostNode ( std::shared_ptr<BinaryNode
 
 template<class ItemType>
 auto BinarySearchTree<ItemType>::findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
-                                            const ItemType& target )
+                                            const ItemType& target ) const
 {
-    //TODO
+    if ( treePtr == nullptr ) return treePtr;
+
+    if ( target > treePtr->value ) return findNode ( treePtr->right, target );
+    else if ( target < treePtr->value ) return findNode ( treePtr->left, target );
+    else return treePtr;
 }
 
 template<class ItemType>
@@ -275,13 +279,15 @@ void BinarySearchTree<ItemType>::clear ()
 template<class ItemType>
 ItemType BinarySearchTree<ItemType>::getEntry ( const ItemType& anEntry ) const
 {
-    //TODO
+    std::auto_ptr<BinaryNode<ItemType>> entry = findNode ( rootPtr, anEntry );
+    if ( entry == nullptr ) throw "Entry could not be found";
+    return *entry;
 }
 
 template<class ItemType>
 bool BinarySearchTree<ItemType>::contains ( const ItemType& anEntry ) const
 {
-    //TODO
+    return (findNode ( rootPtr, anEntry ) != nullptr);
 }
 
 template<class ItemType>
