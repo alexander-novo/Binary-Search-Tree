@@ -262,26 +262,26 @@ bool BinarySearchTree<ItemType>::contains ( const ItemType& anEntry ) const
     //TODO
 }
 
-template<class Itemtype>
+template<class ItemType>
 void BinarySearchTree<ItemType>::preorderTraverse ( void visit ( ItemType& ) ) const
 {
     //TODO
 }
 
-template<class Itemtype>
+template<class ItemType>
 void BinarySearchTree<ItemType>::inorderTraverse ( void visit ( ItemType& ) ) const
 {
     //TODO
 }
 
-template<class Itemtype>
+template<class ItemType>
 void BinarySearchTree<ItemType>::postorderTraverse ( void visit ( ItemType& ) ) const
 {
     //TODO
 }
 
 template<class ItemType>
-BinarySearchTree<ItemType>& BinarySearchTree::operator=( const BinarySearchTree<ItemType>& newTree )
+BinarySearchTree<ItemType>& BinarySearchTree<ItemType>::operator=( const BinarySearchTree<ItemType>& newTree )
 {
     //TODO
 }
