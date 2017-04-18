@@ -239,7 +239,14 @@ ItemType BinarySearchTree<ItemType>::getRootData () const
 template<class ItemType>
 void BinarySearchTree<ItemType>::setRootData ( const ItemType& newData )
 {
-    //TODO
+    if ( rootPtr == nullptr )
+    {
+        rootPtr = new BinaryNode<ItemType>;
+    }
+
+    //Why is this something we would ever want to do?
+    //It sounds like a really bad idea in the case of a Binary Search Tree
+    rootPtr->value = newData;
 }
 
 template<class ItemType>
