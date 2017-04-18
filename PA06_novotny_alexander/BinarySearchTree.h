@@ -44,7 +44,7 @@ class BinarySearchTree
                         const ItemType& target );
 
         int getHeightFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
-        int getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treeptr ) const;
+        int getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
 
         void preorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
         void inorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
@@ -149,9 +149,11 @@ int BinarySearchTree<ItemType>::getHeightFrom ( std::shared_ptr<BinaryNode<ItemT
 }
 
 template<class ItemType>
-int BinarySearchTree<ItemType>::getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treeptr ) const
+int BinarySearchTree<ItemType>::getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
 {
-    //TODO
+    if ( treePtr == nullptr ) return 0;
+
+    return 1 + getSizeFrom ( treePtr->left ) + getSizeFrom ( treePtr->right );
 }
 
 template<class ItemType>
@@ -224,7 +226,7 @@ int BinarySearchTree<ItemType>::getHeight () const
 template<class ItemType>
 int BinarySearchTree<ItemType>::getNumberOfNodes () const
 {
-    //TODO
+    return getSizeFrom ( rootPtr );
 }
 
 template<class ItemType>
