@@ -14,6 +14,8 @@ int main ()
 
     std::cout << test << std::endl << "Height: " << test.getHeight() << std::endl;
 
+    test.preorderTraverse ( blah );
+
     BinarySearchTree<int> test2;
 
     test2.add ( 8 );
@@ -24,4 +26,9 @@ int main ()
 
     std::cout << test2 << std::endl << "Height: " << test2.getHeight() << std::endl;
 
+}
+
+void blah ( int& ech )
+{
+    std::cout << ech << std::endl;
 }

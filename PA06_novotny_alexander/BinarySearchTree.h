@@ -157,7 +157,11 @@ int BinarySearchTree<ItemType>::getSizeFrom ( std::shared_ptr<BinaryNode<ItemTyp
 template<class ItemType>
 void BinarySearchTree<ItemType>::preorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
 {
-    //TODO
+    if ( treePtr == nullptr ) return;
+
+    preorder ( visit, treePtr->left );
+    visit ( treePtr->value );
+    preorder ( visit, treePtr->right );
 }
 
 template<class ItemType>
@@ -265,7 +269,7 @@ bool BinarySearchTree<ItemType>::contains ( const ItemType& anEntry ) const
 template<class ItemType>
 void BinarySearchTree<ItemType>::preorderTraverse ( void visit ( ItemType& ) ) const
 {
-    //TODO
+    preorder ( visit, rootPtr );
 }
 
 template<class ItemType>
