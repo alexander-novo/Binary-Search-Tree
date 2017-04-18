@@ -232,7 +232,8 @@ int BinarySearchTree<ItemType>::getNumberOfNodes () const
 template<class ItemType>
 ItemType BinarySearchTree<ItemType>::getRootData () const
 {
-    //TODO
+    if ( rootPtr == nullptr ) throw "There is no root data";
+    return rootPtr->value;
 }
 
 template<class ItemType>
