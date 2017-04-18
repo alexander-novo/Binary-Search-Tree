@@ -15,6 +15,11 @@ int main ()
     std::cout << test << std::endl << "Height: " << test.getHeight() << std::endl;
 
     test.preorderTraverse ( blah );
+    std::cout << std::endl;
+    test.inorderTraverse ( blah );
+    std::cout << std::endl;
+    test.postorderTraverse ( blah );
+    std::cout << std::endl;
 
     BinarySearchTree<int> test2;
 

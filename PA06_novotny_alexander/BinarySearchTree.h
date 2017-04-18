@@ -159,21 +159,29 @@ void BinarySearchTree<ItemType>::preorder ( void visit ( ItemType& ), std::share
 {
     if ( treePtr == nullptr ) return;
 
-    preorder ( visit, treePtr->left );
     visit ( treePtr->value );
+    preorder ( visit, treePtr->left );
     preorder ( visit, treePtr->right );
 }
 
 template<class ItemType>
 void BinarySearchTree<ItemType>::inorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
 {
-    //TODO
+    if ( treePtr == nullptr ) return;
+
+    inorder ( visit, treePtr->left );
+    visit ( treePtr->value );
+    inorder ( visit, treePtr->right );
 }
 
 template<class ItemType>
 void BinarySearchTree<ItemType>::postorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
 {
-    //TODO
+    if ( treePtr == nullptr ) return;
+
+    postorder ( visit, treePtr->left );
+    postorder ( visit, treePtr->right );
+    visit ( treePtr->value );
 }
 
 // PUBLIC METHODS /////////////////////////////////////////////////////////////
@@ -275,13 +283,13 @@ void BinarySearchTree<ItemType>::preorderTraverse ( void visit ( ItemType& ) ) c
 template<class ItemType>
 void BinarySearchTree<ItemType>::inorderTraverse ( void visit ( ItemType& ) ) const
 {
-    //TODO
+    inorder ( visit, rootPtr );
 }
 
 template<class ItemType>
 void BinarySearchTree<ItemType>::postorderTraverse ( void visit ( ItemType& ) ) const
 {
-    //TODO
+    postorder ( visit, rootPtr );
 }
 
 template<class ItemType>
