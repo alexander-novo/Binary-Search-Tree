@@ -32,26 +32,28 @@ class BinarySearchTree
             }
         };
 
-        auto placeNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
-                         std::shared_ptr<BinaryNode<ItemType>> newNodePtr );
-        auto removeValue ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+        typedef std::shared_ptr<BinaryNode<ItemType>> NodePtr;
+
+        auto placeNode ( NodePtr treePtr,
+                         NodePtr newNodePtr );
+        auto removeValue ( NodePtr treePtr,
                            const ItemType& target,
                            bool& isSuccessful );
-        auto removeNode ( std::shared_ptr<BinaryNode<ItemType>> nodePtr );
-        auto removeLeftMostNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+        auto removeNode ( NodePtr nodePtr );
+        auto removeLeftMostNode ( NodePtr treePtr,
                                   ItemType& inorderSuccesor );
-        auto findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+        auto findNode ( NodePtr treePtr,
                         const ItemType& target ) const;
 
-        int getHeightFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
-        int getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
+        int getHeightFrom ( NodePtr treePtr ) const;
+        int getSizeFrom ( NodePtr treePtr ) const;
 
-        void preorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
-        void inorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
-        void postorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const;
+        void preorder ( void visit ( ItemType& ), NodePtr treePtr ) const;
+        void inorder ( void visit ( ItemType& ), NodePtr treePtr ) const;
+        void postorder ( void visit ( ItemType& ), NodePtr treePtr ) const;
 
     private:
-        std::shared_ptr<BinaryNode<ItemType>> rootPtr;
+        NodePtr rootPtr;
 
     public:
         BinarySearchTree ();
@@ -83,8 +85,8 @@ class BinarySearchTree
 // PROTECTED METHODS //////////////////////////////////////////////////////////
 
 template<class ItemType>
-auto BinarySearchTree<ItemType>::placeNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
-                                             std::shared_ptr<BinaryNode<ItemType>> newNodePtr )
+auto BinarySearchTree<ItemType>::placeNode ( NodePtr treePtr,
+                                             NodePtr newNodePtr )
 {
     //If this root is empty, place our new node here
     if ( treePtr == nullptr )
@@ -106,28 +108,28 @@ auto BinarySearchTree<ItemType>::placeNode ( std::shared_ptr<BinaryNode<ItemType
 }
 
 template<class ItemType>
-auto BinarySearchTree<ItemType>::removeValue ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+auto BinarySearchTree<ItemType>::removeValue ( NodePtr treePtr,
                                                const ItemType& target,
                                                bool& isSuccessful )
 {
-    //TODO
+    NodePtr nodePtr;
 }
 
 template<class ItemType>
-auto BinarySearchTree<ItemType>::removeNode ( std::shared_ptr<BinaryNode<ItemType>> nodePtr )
+auto BinarySearchTree<ItemType>::removeNode ( NodePtr nodePtr )
 {
     //TODO
 }
 
 template<class ItemType>
-auto BinarySearchTree<ItemType>::removeLeftMostNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+auto BinarySearchTree<ItemType>::removeLeftMostNode ( NodePtr treePtr,
                                                       ItemType& inorderSuccesor )
 {
     //TODO
 }
 
 template<class ItemType>
-auto BinarySearchTree<ItemType>::findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr,
+auto BinarySearchTree<ItemType>::findNode ( NodePtr treePtr,
                                             const ItemType& target ) const
 {
     if ( treePtr == nullptr ) return treePtr;
@@ -138,7 +140,7 @@ auto BinarySearchTree<ItemType>::findNode ( std::shared_ptr<BinaryNode<ItemType>
 }
 
 template<class ItemType>
-int BinarySearchTree<ItemType>::getHeightFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+int BinarySearchTree<ItemType>::getHeightFrom ( NodePtr treePtr ) const
 {
     if ( treePtr == nullptr )
     {
@@ -153,7 +155,7 @@ int BinarySearchTree<ItemType>::getHeightFrom ( std::shared_ptr<BinaryNode<ItemT
 }
 
 template<class ItemType>
-int BinarySearchTree<ItemType>::getSizeFrom ( std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+int BinarySearchTree<ItemType>::getSizeFrom ( NodePtr treePtr ) const
 {
     if ( treePtr == nullptr ) return 0;
 
@@ -161,7 +163,7 @@ int BinarySearchTree<ItemType>::getSizeFrom ( std::shared_ptr<BinaryNode<ItemTyp
 }
 
 template<class ItemType>
-void BinarySearchTree<ItemType>::preorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+void BinarySearchTree<ItemType>::preorder ( void visit ( ItemType& ), NodePtr treePtr ) const
 {
     if ( treePtr == nullptr ) return;
 
@@ -171,7 +173,7 @@ void BinarySearchTree<ItemType>::preorder ( void visit ( ItemType& ), std::share
 }
 
 template<class ItemType>
-void BinarySearchTree<ItemType>::inorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+void BinarySearchTree<ItemType>::inorder ( void visit ( ItemType& ), NodePtr treePtr ) const
 {
     if ( treePtr == nullptr ) return;
 
@@ -181,7 +183,7 @@ void BinarySearchTree<ItemType>::inorder ( void visit ( ItemType& ), std::shared
 }
 
 template<class ItemType>
-void BinarySearchTree<ItemType>::postorder ( void visit ( ItemType& ), std::shared_ptr<BinaryNode<ItemType>> treePtr ) const
+void BinarySearchTree<ItemType>::postorder ( void visit ( ItemType& ), NodePtr treePtr ) const
 {
     if ( treePtr == nullptr ) return;
 
