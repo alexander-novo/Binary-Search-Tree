@@ -3,31 +3,43 @@
 int main ()
 {
     BinarySearchTree<int> test;
+    std::vector<int> values;
 
-    test.add ( 5 );
-    test.add ( 2 );
-    test.add ( 7 );
-    test.add ( 1 );
-    test.add ( 4 );
-    test.add ( 3 );
-    test.add ( 6 );
+    srand ( time ( NULL ) );
 
-    std::cout << test << std::endl << "Height: " << test.getHeight() << std::endl;
+    for ( int i = 1; i <= 200; i++ )
+    {
+        values.push_back ( i );
+    }
 
-    std::cout << test.getNumberOfNodes () << std::endl;
+    for ( int i = 0; i < 100; i++ )
+    {
+        int randomIndex = rand () % values.size ();
+        int value = values [ randomIndex ];
+        test.add ( value );
+        values.erase ( values.begin () + randomIndex );
+    }
 
-    BinarySearchTree<int> test2;
+    int value;
+    bool success;
 
-    test2.add ( 8 );
-    test2.add ( 6 );
-    test2.add ( 4 );
-    test2.add ( 2 );
-    test2.add ( 7 );
+    while ( true )
+    {
+        std::cout << test << std::endl
+            << "Enter a value to remove: " << std::endl;
 
-    std::cout << test2 << std::endl << "Height: " << test2.getHeight() << std::endl;
+        std::cin >> value;
 
-    std::cout << test2.getNumberOfNodes () << std::endl;
+        if ( value == 0 )
+        {
+            break;
+        }
 
+        success = test.remove ( value );
+
+        std::cout << "Removal " << ( success ? "Successful" : "Failed" ) << std::endl;
+    }
+    
 }
 
 void blah ( int& ech )
