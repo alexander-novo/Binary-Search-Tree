@@ -39,7 +39,7 @@ class BinarySearchTree
         auto removeValue ( NodePtr treePtr,
                            const ItemType& target,
                            bool& isSuccessful );
-        auto removeNode ( NodePtr nodePtr );
+        auto emptyNode ( NodePtr node );
         std::shared_ptr<BinaryNode<ItemType>> removeLeftMostNode ( NodePtr parentPtr,
                                   NodePtr treePtr );
         auto findNode ( NodePtr treePtr,
@@ -154,6 +154,18 @@ auto BinarySearchTree<ItemType>::removeValue ( NodePtr treePtr,
     }
 
     return treePtr;
+}
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::emptyNode ( NodePtr node )
+{
+    if ( node == nullptr ) return;
+
+    emptyNode ( node->left );
+    emptyNode ( node->right );
+
+    node->left = nullptr;
+    node->right = nullptr;
 }
 
 template<class ItemType>
@@ -340,7 +352,8 @@ bool BinarySearchTree<ItemType>::remove ( const ItemType& target )
 template<class ItemType>
 void BinarySearchTree<ItemType>::clear ()
 {
-    //TODO
+    emptyNode ( treePtr );
+    treePtr = nullptr;
 }
 
 template<class ItemType>
