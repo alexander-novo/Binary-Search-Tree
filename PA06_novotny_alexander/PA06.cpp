@@ -18,7 +18,11 @@ int main ()
         int value = values [ randomIndex ];
         test.add ( value );
         values.erase ( values.begin () + randomIndex );
+        //system ( "cls" );
+        //std::cout << test;
     }
+
+    //system ( "cls" );
 
     int value;
     bool success;

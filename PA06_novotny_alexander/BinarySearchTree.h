@@ -148,10 +148,6 @@ auto BinarySearchTree<ItemType>::removeValue ( NodePtr treePtr,
         else
         {
             treePtr = removeLeftMostNode ( treePtr, treePtr->right );
-            if ( treePtr == treePtr->right )
-            {
-                treePtr->right == nullptr;
-            }
         }
 
         isSuccessful = true;
@@ -164,7 +160,8 @@ template<class ItemType>
 std::shared_ptr<BinarySearchTree<ItemType>::BinaryNode<ItemType>> BinarySearchTree<ItemType>::removeLeftMostNode ( NodePtr parentPtr,
                                                       NodePtr treePtr )
 {
-    NodePtr original = parentPtr;
+    NodePtr originalLeft = parentPtr->left;
+    NodePtr originalRight = parentPtr->right;
     //TODO more documentation - Ima sleepy sleep for now
     //Keep going until we don't have a left child
     while ( treePtr->left != nullptr )
@@ -177,18 +174,18 @@ std::shared_ptr<BinarySearchTree<ItemType>::BinaryNode<ItemType>> BinarySearchTr
     if ( treePtr->right != nullptr )
     {
         parentPtr->left = removeLeftMostNode ( treePtr, treePtr->right );
-        if ( parentPtr->left->right == parentPtr->left )
-        {
-            parentPtr->left->right = nullptr;
-        }
     }
     else
     {
         parentPtr->left = nullptr;
     }
 
-    treePtr->left = original->left;
-    treePtr->right = original->right;
+    treePtr->left = originalLeft;
+    if ( originalRight != treePtr )
+    {
+        treePtr->right = originalRight;
+    }
+    
 
     return treePtr;
 }
@@ -335,7 +332,7 @@ template<class ItemType>
 bool BinarySearchTree<ItemType>::remove ( const ItemType& target )
 {
     bool isSuccessful = false;
-    removeValue ( rootPtr, target, isSuccessful );
+    rootPtr = removeValue ( rootPtr, target, isSuccessful );
 
     return isSuccessful;
 }
