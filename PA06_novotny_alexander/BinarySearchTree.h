@@ -352,8 +352,8 @@ bool BinarySearchTree<ItemType>::remove ( const ItemType& target )
 template<class ItemType>
 void BinarySearchTree<ItemType>::clear ()
 {
-    emptyNode ( treePtr );
-    treePtr = nullptr;
+    emptyNode ( rootPtr );
+    rootPtr = nullptr;
 }
 
 template<class ItemType>
