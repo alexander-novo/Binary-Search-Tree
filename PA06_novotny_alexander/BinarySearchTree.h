@@ -12,8 +12,8 @@ class BinarySearchTree
         struct BinaryNode
         {
             ItemType value;
-            std::shared_ptr<BinaryNode<NodeType>> left = nullptr;
-            std::shared_ptr<BinaryNode<NodeType>> right = nullptr;
+            std::shared_ptr<BinaryNode<NodeType>> left;
+            std::shared_ptr<BinaryNode<NodeType>> right;
 
             void print ( std::ostream& out, bool isLeft, std::string indent) const
             {
